@@ -1,59 +1,76 @@
-import { useEffect, useState } from 'react';
-import { Layout, Menu } from 'antd';
-import { AdminRouterItem, routes } from '../../router';
-import { useLocation, useNavigate } from 'react-router-dom';
-
+import { useEffect, useState } from "react";
+import { Layout, Menu } from "antd";
+import { AdminRouterItem, routes } from "../../router";
+import { useLocation, useNavigate } from "react-router-dom";
+import IMAGES from "@theming/images";
 const { Sider } = Layout;
 
 const getMenuItems = (routes: AdminRouterItem[]): any[] => {
-  return routes.map(itm => {
-    if (!itm.meta) return null
-    let children = null
-    if (itm.children) children = getMenuItems(itm.children)
-    return children ? {
-      ...itm.meta,
-      children
-    } : {
-      ...itm.meta,
-      path: itm.path,
-    }
-  }).filter(itm => !!itm)
-}
+  return routes
+    .map((itm) => {
+      if (!itm.meta) return null;
+      let children = null;
+      if (itm.children) children = getMenuItems(itm.children);
+      return children
+        ? {
+            ...itm.meta,
+            children,
+          }
+        : {
+            ...itm.meta,
+            path: itm.path,
+          };
+    })
+    .filter((itm) => !!itm);
+};
 
 /**
  * PageSidebar
  * @param props {autoCollapse?: boolean} automatic collapes menu when click another menu
- * @returns 
+ * @returns
  */
-const PageSidebar = (props: {
-  autoCollapse?: boolean
-}) => {
-  const { autoCollapse = true } = props
-  const menuItems = getMenuItems(routes)
-  const navigate = useNavigate()
-  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
-  const [lastOpenedMenu, setLastOpenedMenu] = useState<string[]>([])
-  const location = useLocation()
+const PageSidebar = (props: { autoCollapse?: boolean }) => {
+  const { autoCollapse = true } = props;
+  const menuItems = getMenuItems(routes);
+  const navigate = useNavigate();
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
+  const [lastOpenedMenu, setLastOpenedMenu] = useState<string[]>([]);
+  const location = useLocation();
 
-  const onSwitchMenu = ({ key, keyPath }: { key: string; keyPath: string[] }) => {
-    if (autoCollapse && keyPath.slice(1)) setLastOpenedMenu(keyPath.slice(1))
-    navigate(key)
-  }
+  const onSwitchMenu = ({
+    key,
+    keyPath,
+  }: {
+    key: string;
+    keyPath: string[];
+  }) => {
+    if (autoCollapse && keyPath.slice(1)) setLastOpenedMenu(keyPath.slice(1));
+    navigate(key);
+  };
 
   const onOpenChange = (openKeys: string[]) => {
-    setLastOpenedMenu(openKeys)
-  }
+    setLastOpenedMenu(openKeys);
+  };
 
   useEffect(() => {
-    setSelectedKeys([`${location.pathname}`])
-    navigate(location.pathname)
-  }, [location.pathname])
+    setSelectedKeys([`${location.pathname}`]);
+    navigate(location.pathname);
+  }, [location.pathname]);
 
   return (
-    <Sider theme='light'>
-      <Menu openKeys={lastOpenedMenu} onOpenChange={onOpenChange} selectedKeys={selectedKeys} mode="inline" items={menuItems} onClick={onSwitchMenu} />
-    </Sider>
-  )
-}
+    <Sider>
+      <img src={IMAGES.COMMON_IMAGES.logoLettersWhite} alt="" />
 
-export default PageSidebar
+      <Menu
+        openKeys={lastOpenedMenu}
+        onOpenChange={onOpenChange}
+        selectedKeys={selectedKeys}
+        mode="inline"
+        items={menuItems}
+        onClick={onSwitchMenu}
+      />
+    </Sider>
+  );
+};
+
+export default PageSidebar;
