@@ -8,6 +8,7 @@ import { Outlet } from "react-router-dom";
 const demoRoutes: AdminRouterItem[] = [
   {
     path: "demo",
+    isAuth: true,
     element: <DemoPage />,
     meta: {
       label: "Demo",
@@ -17,6 +18,7 @@ const demoRoutes: AdminRouterItem[] = [
     },
     children: [
       {
+        isAuth: true,
         path: "chart",
         element: <DemoChart />,
         meta: {
@@ -27,6 +29,7 @@ const demoRoutes: AdminRouterItem[] = [
         },
       },
       {
+        isAuth: true,
         path: "table",
         element: <DemoTable />,
         meta: {
@@ -37,6 +40,7 @@ const demoRoutes: AdminRouterItem[] = [
         },
       },
       {
+        isAuth: true,
         path: "nested",
         element: <Outlet />,
         meta: {
@@ -47,6 +51,7 @@ const demoRoutes: AdminRouterItem[] = [
         },
         children: [
           {
+            isAuth: true,
             path: "table",
             element: <DemoTable />,
             meta: {

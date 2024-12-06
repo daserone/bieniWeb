@@ -7,6 +7,7 @@ const { Sider } = Layout;
 
 const getMenuItems = (routes: AdminRouterItem[]): any[] => {
   return routes
+    .filter((itm) => !!itm.isAuth)
     .map((itm) => {
       if (!itm.meta) return null;
       let children = null;

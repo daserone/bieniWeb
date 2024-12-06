@@ -1,5 +1,6 @@
 import { Layout } from "antd";
 import { BellOutlined } from "@ant-design/icons";
+import useUser from "@/hooks/useUser";
 const { Header } = Layout;
 
 const Headerbar = (props: { colorBgContainer: string }) => {
@@ -7,6 +8,8 @@ const Headerbar = (props: { colorBgContainer: string }) => {
   // const setCompactAlgorithm = useConfigStore(
   //   (state) => state.setCompactAlgorithm
   // );
+
+  const { user } = useUser();
 
   return (
     <Header
@@ -27,11 +30,15 @@ const Headerbar = (props: { colorBgContainer: string }) => {
           <BellOutlined style={{ fontSize: 20 }} />
           {/* <Switch checkedChildren="Light" unCheckedChildren="Dark" defaultChecked onChange={(checked) => setAlgorithm(checked ? 'default' : 'dark')} />
           <Switch checkedChildren="Compact" unCheckedChildren="Loose" onChange={(checked) => setCompactAlgorithm(checked ? 'compact' : '')} /> */}
-          <p style={{ marginRight: 10 }}>Yujian Xue</p>
+          <p style={{ marginRight: 10 }}>{user.full_name}</p>
           <img
-            src="https://avatars.githubusercontent.com/u/48818060?s=48&v=4"
+            src={
+              user.avatar !== ""
+                ? user.avatar
+                : "https://avatars.githubusercontent.com/u/48818060?s=48&v=4"
+            }
             alt="avatar"
-            style={{ width: 40, height: 40 }}
+            style={{ width: 40, height: 40, borderRadius: "50%" }}
           />
         </div>
       </div>
