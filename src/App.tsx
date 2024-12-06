@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PageLayout from "./components/layout";
 import { ConfigProvider } from "antd";
 // import useConfigStore from "./store/config";
@@ -9,18 +9,29 @@ import { Provider } from "react-redux";
 import { store, persistor } from "@store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import RootRouter from "./router/RootRouter";
+import { FirebaseService } from "./providers/firebase/FirebaseService";
 
 const App: React.FC = () => {
   // const theme = useConfigStore((state) => state.themeConfig);
   const navigate = useNavigate();
   const queryClient = new QueryClient();
 
-  // TODO: refactor this logic
-  if (window.location.pathname === "/") {
-    setTimeout(() => {
-      navigate("/demo/table");
-    });
-  }
+  //init firebase service
+  // FirebaseService.instance;
+
+  useEffect(() => {
+    FirebaseService.instance;
+    if (window.location.pathname === "/") {
+      setTimeout(() => {
+        navigate("/demo/table");
+      });
+    }
+    const apiURL = import.meta.env.VITE_BASE_URL;
+    const apiMode = import.meta.env.MODE;
+
+    console.log("API url:", apiURL);
+    console.log("API mode:", apiMode);
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>

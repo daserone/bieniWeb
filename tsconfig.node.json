@@ -21,7 +21,10 @@
       "@views/*": ["./src/views/*"],
       "@utils/*": ["./src/utils/*"],
       "@theming/*": ["./src/theming/*"],
-      "@hooks/*": ["./src/hooks/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@services/*": ["./src/services/*"],
+      "@models/*": ["./src/models/*"]
     }
   },
   "include": ["vite.config.ts", "./src/**/*.ts", "./src/**/*.tsx"]
