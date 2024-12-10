@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PageLayout from "./components/layout";
 import { ConfigProvider } from "antd";
 // import useConfigStore from "./store/config";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -8,8 +7,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { store, persistor } from "@store/store";
 import { PersistGate } from "redux-persist/integration/react";
-import RootRouter from "./router/RootRouter";
 import { FirebaseService } from "./providers/firebase/FirebaseService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App: React.FC = () => {
   // const theme = useConfigStore((state) => state.themeConfig);
@@ -39,6 +39,7 @@ const App: React.FC = () => {
         <PersistGate loading={null} persistor={persistor}>
           <ConfigProvider theme={themeConfig}>
             <Outlet />
+            <ToastContainer />
           </ConfigProvider>
         </PersistGate>
       </Provider>

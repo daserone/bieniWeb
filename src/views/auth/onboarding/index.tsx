@@ -1,9 +1,17 @@
 import { Layout, Card, Button } from "antd";
 import { Footer } from "antd/es/layout/layout";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import useOnboardingScreen from "./hooks/useOnboarding";
 
 function OnboardingPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location.state);
+
+  const { id, email } = location.state as any;
+
+  const { accounts, handleSelectAccount } = useOnboardingScreen(id, email);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -23,15 +31,12 @@ function OnboardingPage() {
             margin: "auto",
           }}
         >
-          <h1>Welcome to the Onboarding Page</h1>
-          <p>Click to go login</p>
-          <Button type="primary" onClick={() => navigate("/login")}>
-            Go Login
-          </Button>
-          <p>Click to go register</p>
-          <Button type="primary" onClick={() => navigate("/register")}>
-            Go Register
-          </Button>
+          <h1>Selecciona una cuenta</h1>
+          {accounts.map((account: any, index: number) => (
+            <Button key={index} onClick={() => handleSelectAccount(account)}>
+              {account.nombre} {account.apellido}
+            </Button>
+          ))}
         </Card>
       </div>
       <Footer style={{ textAlign: "center" }}>BieniWeb</Footer>

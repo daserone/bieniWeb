@@ -22,13 +22,11 @@ export abstract class AuthService {
         isFromSocial ? "doLoginWithGoogle" : "dologinWithCredencial"
       );
       formData.append("correo", email);
-      formData.append("codigo", "web");
+      formData.append("codigo", "2.1.0");
       // formData.append('codigo', '2.1.0');
       const token = await FirebaseService.instance.getFCMToken();
-      if (!token) {
-        throw new Error("FCM token is undefined");
-      }
-      formData.append("token", token);
+
+      formData.append("token", token ?? "");
       if (!isFromSocial) {
         formData.append("clave", password);
       } else {
@@ -41,7 +39,9 @@ export abstract class AuthService {
       });
       return response.data;
     } catch (error) {
-      throw new Error(JSON.stringify(error));
+      console.log("error", error);
+
+      throw new Error(JSON.stringify("error"));
     }
   }
   //pw recovery
