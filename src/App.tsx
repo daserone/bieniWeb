@@ -23,14 +23,11 @@ const App: React.FC = () => {
     FirebaseService.instance;
     if (window.location.pathname === "/") {
       setTimeout(() => {
-        navigate("/demo/table");
+        navigate("/home");
       });
     }
     const apiURL = import.meta.env.VITE_BASE_URL;
     const apiMode = import.meta.env.MODE;
-
-    console.log("API url:", apiURL);
-    console.log("API mode:", apiMode);
   }, []);
 
   return (

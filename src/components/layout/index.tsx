@@ -20,10 +20,7 @@ const PageLayout: React.FC = () => {
         <Headerbar colorBgContainer={colorBgContainer} />
         <PageBreadcrumb />
         <PageContent></PageContent>
-        <Footer style={{ textAlign: "center" }}>
-          React Admin Dashboard ©{new Date().getFullYear()} Created by Yujian
-          Xue
-        </Footer>
+        <Footer style={{ textAlign: "center" }}>BieniWeb</Footer>
       </Layout>
     </Layout>
   );

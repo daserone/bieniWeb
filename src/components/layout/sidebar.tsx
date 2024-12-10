@@ -3,6 +3,7 @@ import { Layout, Menu } from "antd";
 import { AdminRouterItem, routes } from "../../router";
 import { useLocation, useNavigate } from "react-router-dom";
 import IMAGES from "@theming/images";
+import { ReactSVG } from "react-svg";
 const { Sider } = Layout;
 
 const getMenuItems = (routes: AdminRouterItem[]): any[] => {
@@ -16,10 +17,12 @@ const getMenuItems = (routes: AdminRouterItem[]): any[] => {
         ? {
             ...itm.meta,
             children,
+            order: itm.order ?? 1000,
           }
         : {
             ...itm.meta,
             path: itm.path,
+            order: itm.order ?? 1000,
           };
     })
     .filter((itm) => !!itm);
@@ -53,6 +56,19 @@ const PageSidebar = (props: { autoCollapse?: boolean }) => {
     setLastOpenedMenu(openKeys);
   };
 
+  const sortMenuItems = (items: any[]) => {
+    // by order field
+    //if not order field, set to 1000
+
+    return items.sort((a, b) => {
+      const orderA = a.order;
+      const orderB = b.order;
+      return orderA - orderB;
+    });
+  };
+
+  const sortedMenuItems = sortMenuItems(menuItems);
+
   useEffect(() => {
     setSelectedKeys([`${location.pathname}`]);
     navigate(location.pathname);
@@ -60,14 +76,27 @@ const PageSidebar = (props: { autoCollapse?: boolean }) => {
 
   return (
     <Sider>
-      <img src={IMAGES.COMMON_IMAGES.logoLettersWhite} alt="" />
+      <ReactSVG
+        src={IMAGES.ICONS_SVG.logo_letters}
+        style={{
+          width: "100%",
+          height: "auto",
+          padding: "20px",
+          marginBottom: "20px",
+          display: "block",
+          margin: "auto",
+        }}
+      />
 
       <Menu
+        style={{
+          fontWeight: "bold",
+        }}
         openKeys={lastOpenedMenu}
         onOpenChange={onOpenChange}
         selectedKeys={selectedKeys}
         mode="inline"
-        items={menuItems}
+        items={sortedMenuItems}
         onClick={onSwitchMenu}
       />
     </Sider>

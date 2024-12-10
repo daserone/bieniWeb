@@ -1,6 +1,6 @@
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { MenuItemType } from "antd/es/menu/interface";
+import { MenuItemGroupType, MenuItemType } from "antd/es/menu/interface";
 import LoginPage from "@/views/auth/login";
 import RootRouter from "./RootRouter";
 import OnboardingPage from "@/views/auth/onboarding";
@@ -8,9 +8,11 @@ import PublicRoute from "./PublicRoute";
 
 export type AdminRouterItem = RouteObject & {
   // set antd menu props in meta
-  meta?: MenuItemType;
+  meta?: MenuItemType | MenuItemGroupType;
   children?: AdminRouterItem[];
   isAuth?: boolean;
+  order?: number;
+  type?: string;
 };
 
 /**
@@ -46,9 +48,6 @@ const authRoutes = [...(await loadRouteModules())].filter(
 const noAuthRoutes = [...(await loadRouteModules())].filter(
   (route) => !route.isAuth
 );
-
-console.log("authRoutes = ", authRoutes);
-console.log("noAuthRoutes = ", noAuthRoutes);
 
 export const routes: AdminRouterItem[] = [...(await loadRouteModules())];
 export const mapRoutes = (routes: any[]): RouteObject[] => {

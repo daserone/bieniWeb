@@ -16,5 +16,7 @@ export const components: ThemeConfig["components"] = {
     itemBorderRadius: 20,
     colorIconHover: bgWhite,
     itemHoverColor: bgWhite,
+    groupTitleColor: bgWhite,
+    groupTitleFontSize: 12,
   },
 };
