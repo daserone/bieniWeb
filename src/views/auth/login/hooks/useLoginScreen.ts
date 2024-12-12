@@ -5,6 +5,7 @@ import { Form, FormProps } from "antd";
 import { AuthService } from "@/services/models/auth.service";
 import useToast from "@/hooks/useToast";
 import { emailValidator } from "@/utils/validators";
+import { useState } from "react";
 
 export type FieldType = {
   username?: string;
@@ -15,6 +16,8 @@ const useLoginScreen = () => {
   const { modifyUserAction } = useUser();
   const { showToast, showToastError, showToastSuccess } = useToast();
   const navigate = useNavigate();
+  const [openPwRecovery, setOpenPwRecovery] = useState(false);
+  const [openPwChanged, setOpenPwChanged] = useState(false);
 
   const [form] = Form.useForm();
 
@@ -149,31 +152,66 @@ const useLoginScreen = () => {
       });
   };
 
-  // const handleLogin = () => {
-  //   let user: IUserState = {
-  //     access_token: "token-123",
-  //     id_patient: "1",
-  //     id: "1",
-  //     avatar: "",
-  //     email: "test@mail.co,",
-  //     full_name: `pedro perez`,
-  //     name: "pedro",
-  //     last_name: "perez",
-  //     phone: "",
-  //     id_pet: "",
-  //     isPet: false,
-  //     parentesco: "",
-  //     vinculado: 0,
-  //     id_paciente_principal: "",
-  //     id_parentesco: "",
-  //     id_principal: "",
-  //     first_time: false,
-  //   };
+  const pwRecovery = (email: string) => {
+    let emailVal = emailValidator(email);
+    if (emailVal !== "") {
+      showToastError(emailVal);
+      return;
+    }
 
-  //   modifyUserAction(user);
-  // };
+    AuthService.passwordRecovery({
+      email: email,
+      isVc: false,
+    })
+      .then((response) => {
+        const { rsp, msg, data } = response;
+        //success
+        if (rsp == "1") {
+          setOpenPwRecovery(false);
+          setOpenPwChanged(true);
+        }
+        //error
+        if (rsp == "2") {
+          setOpenPwRecovery(false);
+          showToastError(msg);
+        }
+        // waiting for validation
+        if (rsp == "3") {
+          showToastError("Esperando validación");
+          setOpenPwRecovery(false);
+        }
+        //email not verified
+        if (rsp == "4") {
+          showToastError("Email no verificado");
+          setOpenPwRecovery(false);
+        }
+        //continue with registration
+        if (rsp == "5") {
+          showToastError("Error cuenta no registrada");
+          setOpenPwRecovery(false);
+        }
+        //continue with registration with only userid and email
+        if (rsp == "6") {
+          showToastError("Error cuenta no registrada");
+          setOpenPwRecovery(false);
+        }
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
 
-  return { form, onFinish, onFinishFailed, googleSignIn };
+  return {
+    form,
+    onFinish,
+    onFinishFailed,
+    googleSignIn,
+    pwRecovery,
+    openPwRecovery,
+    setOpenPwRecovery,
+    openPwChanged,
+    setOpenPwChanged,
+  };
 };
 
 export default useLoginScreen;

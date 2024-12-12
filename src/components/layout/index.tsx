@@ -18,7 +18,7 @@ const PageLayout: React.FC = () => {
       <PageSidebar />
       <Layout>
         <Headerbar colorBgContainer={colorBgContainer} />
-        <PageBreadcrumb />
+        {/* <PageBreadcrumb /> */}
         <PageContent></PageContent>
         <Footer style={{ textAlign: "center" }}>BieniWeb</Footer>
       </Layout>

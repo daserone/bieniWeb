@@ -27,17 +27,15 @@ const Headerbar = (props: { colorBgContainer: string }) => {
   const items: MenuProps["items"] = [
     {
       key: "1",
-      // icon: <UserOutlined />,
       label: "Profile",
     },
     {
       key: "2",
-      // icon: <SettingOutlined />,
       label: "Settings",
     },
     {
       key: "3",
-      // icon: <LogoutOutlined />,
+
       label: "Logout",
       onClick: logout,
     },

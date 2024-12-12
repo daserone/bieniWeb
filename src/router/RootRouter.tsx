@@ -6,11 +6,7 @@ function RootRouter() {
   const { user } = useUser();
   console.log("user = ", user);
 
-  return user.access_token !== "" ? (
-    <PageLayout />
-  ) : (
-    <Navigate to="/onboarding" />
-  );
+  return user.access_token !== "" ? <PageLayout /> : <Navigate to="/login" />;
 }
 
 export default RootRouter;

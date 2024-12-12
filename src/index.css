@@ -16,3 +16,7 @@
 body {
   margin: 0;
 }
+/*your selectors if needed*/
+.ant-modal-content {
+  border-radius: 30px !important;
+}

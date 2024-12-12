@@ -1,7 +1,15 @@
 import React from "react";
 
 function MyHealthView() {
-  return <div>MyHealthView</div>;
+  return (
+    <div
+      style={{
+        color: "#000",
+      }}
+    >
+      MyHealthView
+    </div>
+  );
 }
 
 export default MyHealthView;

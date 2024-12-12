@@ -2,13 +2,13 @@ import { AdminRouterItem } from "../../router";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@theming/images";
 import MyHealthView from ".";
+import { Outlet } from "react-router-dom";
 
 const myHealthRoutes: AdminRouterItem[] = [
   {
-    path: "",
     order: 2,
     isAuth: true,
-    element: <></>,
+    element: <Outlet />,
     meta: {
       label: "Navegación",
       key: "",
@@ -16,9 +16,9 @@ const myHealthRoutes: AdminRouterItem[] = [
     },
     children: [
       {
-        isAuth: true,
         path: "myHealth",
-        element: <MyHealthView />,
+        isAuth: true,
+        element: <Outlet />,
         meta: {
           label: "Mi Salud",
           title: "Mi Salud",

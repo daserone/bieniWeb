@@ -7,6 +7,7 @@ export const token: Partial<AliasToken> = {
   colorBgBase: bgWhite,
   colorBgContainer: bgWhite,
   colorWhite: bgWhite,
-  fontSizeSM: 0,
-  lineHeightHeading2: 0,
+  colorText: colorPrimary,
+  colorTextSecondary: colors.colorSecondary,
+  colorTextPlaceholder: colors.colorTertiary,
 };

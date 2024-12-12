@@ -39,7 +39,7 @@ const useOnboardingScreen = (userId: any, email: string) => {
     };
 
     modifyUserAction(user);
-    navigate("/demo/table");
+    navigate("/home");
   };
 
   const { showToastError } = useToast();

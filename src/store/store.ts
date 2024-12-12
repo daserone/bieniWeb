@@ -2,6 +2,7 @@ import { Action, combineReducers, Store } from "redux";
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import user from "@store/reducers/user.reducer";
+import profiles from "@store/reducers/profiles.reducer";
 import { configureStore, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 
@@ -12,8 +13,9 @@ const persistConfig = {
   blacklist: ["err"],
 };
 
-const rootReducer = combineReducers({
+const rootReducer: any = combineReducers({
   user,
+  profiles,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,7 +1,13 @@
-import React from "react";
-
 function ProfileView() {
-  return <div>ProfileView</div>;
+  return (
+    <div
+      style={{
+        color: "#000",
+      }}
+    >
+      ProfileView
+    </div>
+  );
 }
 
 export default ProfileView;

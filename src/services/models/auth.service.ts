@@ -61,10 +61,8 @@ export abstract class AuthService {
       formData.append("correo", email);
 
       const token = await FirebaseService.instance.getFCMToken();
-      if (!token) {
-        throw new Error("FCM token is undefined");
-      }
-      formData.append("token", token);
+
+      formData.append("token", token ?? "");
       formData.append("vc", isVc ? "1" : "0");
 
       const response = await service.post("controller/usuarios.php", formData, {
@@ -72,6 +70,8 @@ export abstract class AuthService {
       });
       return response.data;
     } catch (error) {
+      console.log("error", error);
+
       throw new Error(JSON.stringify(error));
     }
   }

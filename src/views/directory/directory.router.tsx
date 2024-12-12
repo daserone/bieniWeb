@@ -2,13 +2,14 @@ import { AdminRouterItem } from "../../router";
 import { ReactSVG } from "react-svg";
 import IMAGES from "@theming/images";
 import DirectoryView from ".";
+import { Outlet } from "react-router-dom";
 
 const directoryRoutes: AdminRouterItem[] = [
   {
-    path: "",
+    path: "directory",
     order: 4,
     isAuth: true,
-    element: <></>,
+    element: <Outlet />,
     meta: {
       label: "Directorio",
       title: "Directorio",
@@ -18,12 +19,12 @@ const directoryRoutes: AdminRouterItem[] = [
     children: [
       {
         isAuth: true,
-        path: "directory",
+        path: "affiliates",
         element: <DirectoryView />,
         meta: {
           label: "Afiliados",
           title: "Afiliados",
-          key: "/directory/afiliados",
+          key: "/directory/affiliates",
         },
       },
     ],

@@ -1,7 +1,13 @@
-import React from "react";
-
 function StudiesView() {
-  return <div>StudiesView</div>;
+  return (
+    <div
+      style={{
+        color: "#000",
+      }}
+    >
+      StudiesView
+    </div>
+  );
 }
 
 export default StudiesView;

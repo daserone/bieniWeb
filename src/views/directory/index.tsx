@@ -1,7 +1,13 @@
-import React from "react";
-
 function DirectoryView() {
-  return <div>DirectoryView</div>;
+  return (
+    <div
+      style={{
+        color: "#000",
+      }}
+    >
+      DirectoryView
+    </div>
+  );
 }
 
 export default DirectoryView;

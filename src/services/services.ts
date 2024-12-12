@@ -3,6 +3,7 @@ import axios, { AxiosInstance } from "axios";
 import { store } from "@store/store";
 import { IService } from "./constants";
 import { ConfigService } from "@providers/config/ConfigService";
+import { PetsRequestModifier } from "./modifyPetsRequest.interceptor";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: ConfigService.instance.apiURL,
@@ -19,7 +20,7 @@ axiosInstance.interceptors.request.use(
       const token = getTokenFromRedux();
 
       if (token) {
-        request!.headers!.Authorization = `Bearer ${token}`;
+        // request!.headers!.Authorization = `Bearer ${token}`;
       }
     }
     // given request url example : /controller/tratamientos.php
@@ -38,38 +39,38 @@ axiosInstance.interceptors.request.use(
         console.log(`[POST][${JSON.stringify(request?.data)}]`);
       }
 
-      //   const {isPet, idPet} = getIsPetFromRedux();
+      const { isPet, idPet } = getIsPetFromRedux();
 
-      //   if (!isPet) {
-      //     return request;
-      //   }
+      if (!isPet) {
+        return request;
+      }
 
-      //   const petsRequestModifier = new PetsRequestModifier();
+      const petsRequestModifier = new PetsRequestModifier();
 
-      //   const {modifiedData, modifiedParams, modifiedUrl} =
-      //     petsRequestModifier.modifyRequestPets(
-      //       request.data,
-      //       request.params,
-      //       request.url!,
-      //       isPet,
-      //       idPet,
-      //     );
+      const { modifiedData, modifiedParams, modifiedUrl } =
+        petsRequestModifier.modifyRequestPets(
+          request.data,
+          request.params,
+          request.url!,
+          isPet,
+          idPet
+        );
 
-      //   if (isPet && modifiedData) {
-      //     console.log(
-      //       `[POST-MODIFIED][${modifiedUrl}][${JSON.stringify(modifiedData)}]`,
-      //     );
-      //   }
+      if (isPet && modifiedData) {
+        console.log(
+          `[POST-MODIFIED][${modifiedUrl}][${JSON.stringify(modifiedData)}]`
+        );
+      }
 
-      //   if (isPet && modifiedParams) {
-      //     console.log(
-      //       `[GET-MODIFIED][${modifiedUrl}][${JSON.stringify(modifiedParams)}]`,
-      //     );
-      //   }
+      if (isPet && modifiedParams) {
+        console.log(
+          `[GET-MODIFIED][${modifiedUrl}][${JSON.stringify(modifiedParams)}]`
+        );
+      }
 
-      //   request.params = modifiedParams;
-      //   request.url = modifiedUrl;
-      //   request.data = modifiedData;
+      request.params = modifiedParams;
+      request.url = modifiedUrl;
+      request.data = modifiedData;
       return request;
     } catch (error) {
       console.error("error", error);

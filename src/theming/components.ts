@@ -19,4 +19,21 @@ export const components: ThemeConfig["components"] = {
     groupTitleColor: bgWhite,
     groupTitleFontSize: 12,
   },
+  Card: {
+    colorBgContainer: bgWhite,
+  },
+  Form: {
+    labelColor: colorPrimary,
+  },
+  Input: {
+    colorBgContainer: bgWhite,
+    colorBorder: "#7362c764",
+    colorText: "#32256A",
+    colorTextPlaceholder: colorPrimaryDark,
+    controlHeight: 40,
+    borderRadius: 10,
+  },
+  Modal: {
+    borderRadius: 30,
+  },
 };

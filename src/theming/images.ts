@@ -9,6 +9,13 @@ const ICONS_SVG = {
   studies: new URL("@assets/icons/studies-icon.svg", import.meta.url).href,
   directory: new URL("@assets/icons/directory-icon.svg", import.meta.url).href,
   profile: new URL("@assets/icons/profile-icon.svg", import.meta.url).href,
+  logo_color: new URL("@assets/icons/bieni-logo-color.svg", import.meta.url)
+    .href,
+  google_icon: new URL("@assets/icons/google-icon.png", import.meta.url).href,
+  apple_icon: new URL("@assets/icons/apple-icon.svg", import.meta.url).href,
+  success_icon: new URL("@assets/icons/succes-icon.svg", import.meta.url).href,
+  image_icon: new URL("@assets/icons/icon-image.svg", import.meta.url).href,
+  lab_icon: new URL("@assets/icons/icon-lab.svg", import.meta.url).href,
 };
 
 export default { COMMON_IMAGES, ICONS_SVG };
