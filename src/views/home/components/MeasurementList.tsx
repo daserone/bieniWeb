@@ -1,5 +1,6 @@
 import { Card, Col, Row, Typography } from "antd";
 import MeasurementCard from "./MeasurementCard";
+import { colors } from "@/theming/colors";
 
 export interface IMeasurementCard {
   id: number;
@@ -19,12 +20,26 @@ interface MeasurementListProps {
 }
 
 function MeasurementList({ cards }: MeasurementListProps) {
-  const { Title } = Typography;
+  const { Title, Text, Link } = Typography;
 
   return (
     // space 4 cards
     <>
-      <Title level={4}>Mediciones</Title>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Title style={{ marginBottom: "1.2em" }} level={4}>
+          Mediciones
+        </Title>
+
+        <Link underline strong style={{ color: colors.colorPrimary }}>
+          Ver todas
+        </Link>
+      </div>
 
       <Row gutter={[16, 16]}>
         {/* Mediciones */}

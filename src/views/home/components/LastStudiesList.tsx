@@ -2,6 +2,7 @@ import { useLastImage, useLastLab } from "@/hooks/useStudiesQuery";
 import useUser from "@/hooks/useUser";
 import HomeStudiesItem from "./LastStudyCard";
 import { Typography } from "antd";
+import { colors } from "@/theming/colors";
 
 function LastStudiesList() {
   const { user } = useUser();
@@ -16,10 +17,24 @@ function LastStudiesList() {
     isError: isErrorImage,
     isLoading: isLoadingImage,
   } = useLastImage(user.id_patient, user.id, user.id_pet);
-  const { Title } = Typography;
+  const { Title, Link } = Typography;
   return (
     <>
-      <Title level={4}>Últimos estudios</Title>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Title style={{ marginBottom: "1.2em" }} level={4}>
+          Últimos estudios
+        </Title>
+
+        <Link underline strong style={{ color: colors.colorPrimary }}>
+          Ver todos
+        </Link>
+      </div>
 
       {lastImage && <HomeStudiesItem type={"image"} lastImage={lastImage} />}
       {lastLab && <HomeStudiesItem type={"lab"} lastLab={lastLab} />}

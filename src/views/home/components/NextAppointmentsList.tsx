@@ -3,6 +3,7 @@ import { useLastAppointments } from "@hooks/useAppointmentsQuery";
 import { CSSProperties } from "react";
 import { Typography } from "antd";
 import NextAppointmentCard from "./NextAppointmentCard";
+import { colors } from "@/theming/colors";
 
 const NextAppointmentsList = () => {
   const { user } = useUser();
@@ -12,11 +13,26 @@ const NextAppointmentsList = () => {
     isLoading,
   } = useLastAppointments(user.id_patient, user.id_pet);
 
-  const { Title } = Typography;
+  const { Title, Link } = Typography;
 
   return (
     <>
-      <Title level={4}>Próximas citas</Title>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Title style={{ marginBottom: "1.2em" }} level={4}>
+          Próximas citas
+        </Title>
+
+        <Link underline strong style={{ color: colors.colorPrimary }}>
+          Ver todos
+        </Link>
+      </div>
+
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error</div>}
       {appointments && appointments.length === 0 && (

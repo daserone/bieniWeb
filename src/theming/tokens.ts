@@ -10,4 +10,5 @@ export const token: Partial<AliasToken> = {
   colorText: colorPrimary,
   colorTextSecondary: colors.colorSecondary,
   colorTextPlaceholder: colors.colorTertiary,
+  fontFamily: "Montserrat, sans-serif",
 };
