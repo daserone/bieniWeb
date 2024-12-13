@@ -22,7 +22,6 @@ const useLoginScreen = () => {
   const [form] = Form.useForm();
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-    console.log("Success:", values);
     if (values.username === "" || values.password === "") {
       showToastError("Por favor, complete todos los campos");
       return;

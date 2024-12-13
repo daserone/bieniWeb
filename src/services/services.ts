@@ -86,7 +86,7 @@ const getTokenFromRedux = (): string => {
   const state = store.getState();
   const token = state?.user?.access_token;
   if (token) {
-    axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
+    // axiosInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
   }
   return token;
 };

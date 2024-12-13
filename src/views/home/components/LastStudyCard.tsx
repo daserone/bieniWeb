@@ -94,62 +94,13 @@ const HomeStudiesItem: React.FC<HomeStudiesItemProps> = (props) => {
 export default HomeStudiesItem;
 
 const styles: { [key: string]: CSSProperties } = {
-  container: {
-    flex: 1,
-  },
-  content: {
-    paddingTop: 20,
-  },
-  title: {
-    fontSize: 18,
-    textAlign: "left",
-    color: colors.colorPrimary,
-    overflow: "hidden",
-  },
-  titleCard: {
-    fontSize: 14,
-    textAlign: "left",
-    color: colors.colorPrimary,
-    overflow: "hidden",
-    fontWeight: 700,
-  },
-  underline: {
-    fontSize: 12,
-    color: colors.colorPrimary,
-    textDecorationLine: "underline",
-  },
-  rowContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 20,
-  },
-  subTitle: {
-    fontSize: 14,
-    textAlign: "left",
-    color: colors.colorPrimary,
-    fontWeight: 600,
-  },
-  description: {
-    fontSize: 12,
-    color: colors.colorPrimary,
-    textAlign: "left",
-  },
-  date: {
-    fontSize: 12,
-    color: colors.colorSecondary,
-    textAlign: "right",
-    fontWeight: 500,
-  },
-
   studiesItem: {
     borderRadius: 8,
     marginBottom: 10,
     backgroundColor: colors.bgWhite,
     display: "flex",
     flexDirection: "column",
-    padding: 10,
+    padding: 5,
     //     border-radius: 8px;
     // border: 1px solid var(--Neutral-300, #C3C1CA);
     // background: var(--Blanco, #FFF);
@@ -174,6 +125,49 @@ const styles: { [key: string]: CSSProperties } = {
     alignItems: "center",
     gap: 10,
   },
+  title: {
+    fontSize: 18,
+    textAlign: "left",
+    color: colors.colorPrimaryDark,
+    overflow: "hidden",
+  },
+  titleCard: {
+    fontSize: 14,
+    textAlign: "left",
+    color: colors.colorPrimaryDark,
+    overflow: "hidden",
+    fontWeight: 700,
+  },
+  underline: {
+    fontSize: 12,
+    color: colors.colorPrimaryDark,
+    textDecorationLine: "underline",
+  },
+  rowContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 20,
+  },
+  subTitle: {
+    fontSize: 14,
+    textAlign: "left",
+    color: colors.colorPrimaryDark,
+    fontWeight: 600,
+  },
+  description: {
+    fontSize: 12,
+    color: colors.colorPrimaryDark,
+    textAlign: "left",
+  },
+  date: {
+    fontSize: 12,
+    color: colors.colorSecondary,
+    textAlign: "right",
+    fontWeight: 500,
+  },
+
   studiesContent: {
     gap: 10,
     marginTop: 10,

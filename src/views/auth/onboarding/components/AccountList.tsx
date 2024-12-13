@@ -9,8 +9,6 @@ interface AccountListProps {
 }
 
 const AccountList = ({ handleSelectAccount, accounts }: AccountListProps) => {
-  console.log(accounts);
-
   return (
     <div style={styles.card}>
       <h1 style={styles.title}>Bienvenido</h1>

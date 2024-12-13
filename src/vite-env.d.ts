@@ -9,5 +9,5 @@ interface ImportMetaEnv {
   VITE_MTMP_FLOW_ID_TEST: string;
 }
 interface ImportMeta {
-  env: ImportMetaEnv;
+  readonly env: ImportMetaEnv;
 }

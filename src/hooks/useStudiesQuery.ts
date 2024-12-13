@@ -17,7 +17,6 @@ export const useLastImage = (
       }),
     placeholderData: keepPreviousData,
     select: (data: any) => {
-      console.log(data, "last image");
       return data[0];
     },
   });
@@ -29,8 +28,6 @@ export const useLastLab = (id_patient: string, id_pet: string) => {
     queryFn: () => StudiesService.getLastLab(id_patient),
     placeholderData: keepPreviousData,
     select: (data: any) => {
-      console.log(data, "last lab");
-
       return data[0];
     },
   });

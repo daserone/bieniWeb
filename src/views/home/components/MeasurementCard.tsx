@@ -1,9 +1,9 @@
 import { Typography } from "antd";
 import { CSSProperties } from "react";
 import { IMeasurementCard } from "./MeasurementList";
-import { colors } from "@/theming/colors";
-import { getImcTextValue } from "@/utils/measurementsHelper";
-import useProfiles from "@/hooks/useProfiles";
+import { colors } from "@theming/colors";
+import { getImcTextValue } from "@utils/measurementsHelper";
+import useProfiles from "@hooks/useProfiles";
 
 interface MeasurementCard {
   measurement: IMeasurementCard;
@@ -43,13 +43,14 @@ const styles: { [key: string]: CSSProperties } = {
     borderRadius: "7.584px",
     border: "0.758px solid var(--Neutral-300, #C3C1CA)",
     background: "#FFF",
+    height: "130px",
   },
   title: {
     color: colors.colorSecondary,
     fontSize: 12,
   },
   value: {
-    color: colors.colorPrimary,
+    color: colors.colorPrimaryDark,
     fontSize: 24,
     fontWeight: 700,
   },

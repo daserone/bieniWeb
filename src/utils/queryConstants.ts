@@ -32,4 +32,5 @@ export const QUERY_KEYS = {
   ROUTE_NAVAGATION: "route_navegation",
   ROUTE_NAVEGATION_DISEASE: "Route_navegation_disease",
   DONA_VIDA: "dona_vida",
+  NEXT_APPOINTMENTS: "next-appointments",
 };

@@ -18,12 +18,12 @@ function LastStudiesList() {
   } = useLastImage(user.id_patient, user.id, user.id_pet);
   const { Title } = Typography;
   return (
-    <div>
+    <>
       <Title level={4}>Últimos estudios</Title>
 
       {lastImage && <HomeStudiesItem type={"image"} lastImage={lastImage} />}
       {lastLab && <HomeStudiesItem type={"lab"} lastLab={lastLab} />}
-    </div>
+    </>
   );
 }
 

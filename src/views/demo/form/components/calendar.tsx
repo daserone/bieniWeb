@@ -1,12 +1,13 @@
-import React from 'react';
-import { Calendar } from 'antd';
-import type { CalendarProps } from 'antd';
-import type { Dayjs } from 'dayjs';
+import React from "react";
+import { Calendar } from "antd";
+import type { CalendarProps } from "antd";
+import type { Dayjs } from "dayjs";
 
 const CallendarCmp: React.FC = () => {
-  const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>['mode']) => {
-    console.log(value.format('YYYY-MM-DD'), mode);
-  };
+  const onPanelChange = (
+    value: Dayjs,
+    mode: CalendarProps<Dayjs>["mode"]
+  ) => {};
 
   return <Calendar onPanelChange={onPanelChange} />;
 };

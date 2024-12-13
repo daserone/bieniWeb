@@ -11,8 +11,6 @@ function OnboardingPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location.state);
-
   const { id, email } = location.state || { id: "", email: "" };
 
   const { accounts, handleSelectAccount } = useOnboardingScreen(id, email);

@@ -27,8 +27,6 @@ const loadRouteModules = async () => {
   const routeModules: AdminRouterItem[] = [];
 
   for await (const [key, module] of Object.entries(routeModuleFiles)) {
-    console.log("key = ", key, "module = ", module);
-
     if (module) {
       const routes = Array.isArray(module) ? module : [module];
       routeModules.push(...routes);
