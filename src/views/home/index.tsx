@@ -3,12 +3,14 @@ import useHomeScreen from "./hooks/useHomeScreen";
 import MeasurementList from "./components/MeasurementList";
 import LastStudiesList from "./components/LastStudiesList";
 import NextAppointmentsList from "./components/NextAppointmentsList";
+import LastTreatments from "./components/LastTreatments";
+import CalendarHome from "./components/CalendarHome";
 
 function HomeView() {
   const { measurements, isError, isLoading } = useHomeScreen();
   return (
     <>
-      <Row>
+      <Row gutter={[16, 16]}>
         <Col span={17}>
           <MeasurementList cards={measurements} />
           <Row gutter={[16, 16]}>
@@ -16,10 +18,13 @@ function HomeView() {
               <LastStudiesList />
               <NextAppointmentsList />
             </Col>
+            <Col span={12}>
+              <LastTreatments />
+            </Col>
           </Row>
         </Col>
         <Col span={7}>
-          <Typography.Title level={1}>CALENDAR</Typography.Title>
+          <CalendarHome />
         </Col>
       </Row>
     </>
