@@ -1,6 +1,7 @@
 import { Badge, BadgeProps, Calendar, CalendarProps } from "antd";
 import { Dayjs } from "dayjs";
 import React from "react";
+import LastTreatments from "./LastTreatments";
 
 const onPanelChange = (value: Dayjs, mode: CalendarProps<Dayjs>["mode"]) => {
   console.log(value.format("YYYY-MM-DD"), mode);
@@ -92,9 +93,12 @@ const dateCellRender = (value: Dayjs) => {
 
 const CalendarHome = () => {
   const wrapperStyle: React.CSSProperties = {
-    width: 300,
-    border: `1px solid #C3C1CA`,
+    width: "100%",
+    border: `0.1px solid #C3C1CA`,
     borderRadius: 8,
+    borderLeft: "none",
+    borderRight: "none",
+    borderTop: "none",
   };
 
   const cellRender: CalendarProps<Dayjs>["cellRender"] = (current, info) => {
@@ -107,9 +111,12 @@ const CalendarHome = () => {
     <div
       style={{
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        flexDirection: "column",
         marginTop: 30,
+        border: "1px solid #C3C1CA",
+        borderRadius: 8,
+        width: "100%",
+        backgroundColor: "white",
       }}
     >
       <div style={wrapperStyle}>
@@ -120,6 +127,9 @@ const CalendarHome = () => {
 
           //   onPanelChange={onPanelChange}
         />
+      </div>
+      <div style={{ padding: 20 }}>
+        <LastTreatments />
       </div>
     </div>
   );
