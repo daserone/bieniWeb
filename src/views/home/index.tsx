@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Row } from "antd";
 import useHomeScreen from "./hooks/useHomeScreen";
 import MeasurementList from "./components/MeasurementList";
 import LastStudiesList from "./components/LastStudiesList";
@@ -7,7 +7,7 @@ import LastTreatments from "./components/LastTreatments";
 import CalendarHome from "./components/CalendarHome";
 
 function HomeView() {
-  const { measurements, isError, isLoading } = useHomeScreen();
+  const { measurements } = useHomeScreen();
   return (
     <>
       <Row gutter={[16, 16]}>

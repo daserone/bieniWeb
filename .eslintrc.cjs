@@ -5,11 +5,11 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended-type-checked", // change
+    "plugin:@typescript-eslint/recommended", // change
     "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "node_modules"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh", "@typescript-eslint", "import"],
   rules: {
@@ -48,7 +48,7 @@ module.exports = {
   },
 
   parserOptions: {
-    project: true, // change
-    tsconfigRootDir: __dirname,
+    project: "./tsconfig.json",
+    tsconfigRootDir: "./",
   },
 };

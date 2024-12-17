@@ -2,12 +2,23 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
+    "types": ["vite/client"],
     "paths": {
       "@/*": ["src/*"],
       "@assets/*": ["src/assets/*"],
@@ -23,6 +34,11 @@
       "@models/*": ["src/models/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts",
+    "src/vite-env.d.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

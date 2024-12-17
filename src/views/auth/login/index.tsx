@@ -18,6 +18,7 @@ function LoginPage() {
     openPwRecovery,
     setOpenPwChanged,
     setOpenPwRecovery,
+    appleSignIn,
   } = useLoginScreen();
 
   return (
@@ -30,7 +31,11 @@ function LoginPage() {
             {/* apple sign in  */}
             <BieniButton
               text="Inicia sesión con Apple ID"
-              onPress={() => {}}
+              onPress={() => {
+                console.log("apple sign in");
+
+                appleSignIn();
+              }}
               color="#fff"
               textColor="#000"
               borderColor="#b5b5b5"

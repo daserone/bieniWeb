@@ -6,6 +6,7 @@ import { AuthService } from "@/services/models/auth.service";
 import useToast from "@/hooks/useToast";
 import { emailValidator } from "@/utils/validators";
 import { useState } from "react";
+import { useScript, appleAuthHelpers } from "react-apple-signin-auth";
 
 export type FieldType = {
   username?: string;
@@ -76,6 +77,73 @@ const useLoginScreen = () => {
     navigate("/onboarding", {
       state: { id, email },
     });
+  };
+
+  const handleAppleSignIn = (email: string | undefined) => {
+    if (email) {
+      localStorage.setItem("appleEmail", email);
+      return {
+        email: email,
+        password: "",
+        isFromSocial: true,
+        avatar: "",
+      };
+    } else {
+      let storedEmail = localStorage.getItem("appleEmail");
+      if (storedEmail) {
+        return {
+          email: storedEmail,
+          password: "",
+          isFromSocial: true,
+          avatar: "",
+        };
+      } else {
+        return {
+          email: "",
+          password: "",
+          isFromSocial: true,
+          avatar: "",
+        };
+      }
+    }
+  };
+
+  const handleSuccess = (data) => {
+    const { authorization, user } = data;
+    console.log("Authorization", authorization);
+    console.log("User", user);
+
+    // check if user exist in localstorage
+    // if not exist, create user
+    // if exist, update user
+    // signin with user email usign _signIn function
+    let body = handleAppleSignIn(user.email);
+    if (!body.email) {
+      console.log("No email");
+      return;
+    }
+    _signIn(body);
+  };
+
+  const authOptions = {
+    clientId: "com.bieniweb.app", // This is your service ID
+    scope: "email",
+    redirectURI: "https://bieni-latam.web.app/login", // This is your redirect URI
+    nonce: "nonce",
+    usePopup: true, // important to catch up data on the frontend
+  };
+  useScript(appleAuthHelpers.APPLE_SCRIPT_SRC);
+
+  const appleSignIn = async () => {
+    try {
+      appleAuthHelpers.signIn({
+        authOptions: authOptions,
+        onSuccess: (response) => handleSuccess(response),
+        onError: (error) => console.error(error, "error"),
+      });
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   const _signIn = (body: any) => {
@@ -210,6 +278,8 @@ const useLoginScreen = () => {
     setOpenPwRecovery,
     openPwChanged,
     setOpenPwChanged,
+
+    appleSignIn,
   };
 };
 

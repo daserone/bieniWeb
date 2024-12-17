@@ -1,5 +1,3 @@
-import React from "react";
-
 function MyHealthView() {
   return (
     <div

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ConfigProvider } from "antd";
 // import useConfigStore from "./store/config";
 import { Outlet, useNavigate } from "react-router-dom";
-import { themeConfig } from "./theming/themeConfig";
+import { themeConfig } from "@theming/themeConfig";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { store, persistor } from "@store/store";

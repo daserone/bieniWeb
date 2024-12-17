@@ -1,10 +1,5 @@
-import {
-  useMeasurementDetails,
-  useMeasurementReminder,
-  useMeasurements,
-} from "@/hooks/useMeasurementsQuery";
+import { useMeasurements } from "@/hooks/useMeasurementsQuery";
 import useProfiles from "@/hooks/useProfiles";
-import { useLastImage, useLastLab } from "@/hooks/useStudiesQuery";
 import useUser from "@/hooks/useUser";
 import {
   handleCardsMeasurements,

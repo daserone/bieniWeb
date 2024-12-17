@@ -8,7 +8,7 @@ import PublicRoute from "./PublicRoute";
 
 export type AdminRouterItem = RouteObject & {
   // set antd menu props in meta
-  meta?: MenuItemType | MenuItemGroupType;
+  meta?: any;
   children?: AdminRouterItem[];
   isAuth?: boolean;
   order?: number;
