@@ -117,7 +117,8 @@ const useLoginScreen = () => {
     // if not exist, create user
     // if exist, update user
     // signin with user email usign _signIn function
-    let body = handleAppleSignIn(user.email);
+
+    let body = handleAppleSignIn(user?.email);
     if (!body.email) {
       console.log("No email");
       return;

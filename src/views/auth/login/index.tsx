@@ -1,5 +1,4 @@
 import { Layout, Card, Button, Form, Input, Typography } from "antd";
-import { Footer } from "antd/es/layout/layout";
 import useLoginScreen, { FieldType } from "./hooks/useLoginScreen";
 import HeaderAuth from "@/components/layout/headerAuth";
 import { colors } from "@/theming/colors";
@@ -31,11 +30,7 @@ function LoginPage() {
             {/* apple sign in  */}
             <BieniButton
               text="Inicia sesión con Apple ID"
-              onPress={() => {
-                console.log("apple sign in");
-
-                appleSignIn();
-              }}
+              onPress={appleSignIn}
               color="#fff"
               textColor="#000"
               borderColor="#b5b5b5"
