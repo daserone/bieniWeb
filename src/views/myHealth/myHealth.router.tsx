@@ -3,6 +3,7 @@ import { ReactSVG } from "react-svg";
 import IMAGES from "@theming/images";
 import MyHealthView from ".";
 import { Outlet } from "react-router-dom";
+import TreatmentsView from "./treatments";
 
 const myHealthRoutes: AdminRouterItem[] = [
   {
@@ -29,11 +30,12 @@ const myHealthRoutes: AdminRouterItem[] = [
           {
             isAuth: true,
             path: "treatments",
-            element: <MyHealthView />,
+            element: <TreatmentsView />,
             meta: {
               label: "Tratamientos",
               title: "Tratamientos",
               key: "/myHealth/treatments",
+              icon: <ReactSVG src={IMAGES.ICONS_SVG.point_white_icon} />,
             },
           },
         ],

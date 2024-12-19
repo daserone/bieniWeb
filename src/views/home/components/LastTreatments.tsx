@@ -20,12 +20,6 @@ function LastTreatments() {
     isLoading,
   } = useAllTreatments(user.id_patient, user.id_pet);
 
-  const {
-    data: treatmentsByDate,
-    isError: isErrorByDate,
-    isLoading: isLoadingByDate,
-  } = useTodayTreatments(user.id_patient, dayjs().format("YYYY-MM-DD"));
-
   const { Title, Link } = Typography;
 
   const activeTreatments = useMemo(() => {

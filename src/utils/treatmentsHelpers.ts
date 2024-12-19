@@ -82,6 +82,8 @@ export const filterInactiveTreatments = (treatments: any[]) => {
 };
 
 export const getTreatmentName = (treatment: any) => {
+  console.log("treatment", treatment);
+
   try {
     if (
       treatment.idtipotratamiento === "1" ||

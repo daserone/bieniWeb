@@ -11,11 +11,7 @@ interface TreatmentCardProps {
   handleDeleteTreatment: (id: string) => void;
 }
 
-const TreatmentCard = ({
-  treatment,
-  handleGoEditTreatment,
-  handleDeleteTreatment,
-}: TreatmentCardProps) => {
+const TreatmentCard = ({ treatment }: TreatmentCardProps) => {
   const handleGoToTreatment = () => {};
 
   const { Text } = Typography;

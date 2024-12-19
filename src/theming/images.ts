@@ -16,6 +16,20 @@ const ICONS_SVG = {
   success_icon: new URL("@assets/icons/succes-icon.svg", import.meta.url).href,
   image_icon: new URL("@assets/icons/icon-image.svg", import.meta.url).href,
   lab_icon: new URL("@assets/icons/icon-lab.svg", import.meta.url).href,
+  point_white_icon: new URL(
+    "@assets/icons/point-white-icon.svg",
+    import.meta.url
+  ).href,
+  table_icon: new URL("@assets/icons/table-icon.svg", import.meta.url).href,
+  table_icon_selected: new URL(
+    "@assets/icons/table-icon-selected.svg",
+    import.meta.url
+  ).href,
+  grid_icon: new URL("@assets/icons/grid-icon.svg", import.meta.url).href,
+  grid_icon_selected: new URL(
+    "@assets/icons/grid-icon-selected.svg",
+    import.meta.url
+  ).href,
 };
 
 export default { COMMON_IMAGES, ICONS_SVG };

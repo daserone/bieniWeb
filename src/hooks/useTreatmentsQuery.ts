@@ -161,10 +161,14 @@ export const useAllTreatments = (
     },
   });
 };
-
+export interface TodayTreatment {
+  hora: string;
+  accion: string;
+  nombretipotratamiento: string;
+}
 // by date
 export const useTodayTreatments = (id_patient: string, date: string) => {
-  return useQuery<any[]>({
+  return useQuery<TodayTreatment[]>({
     queryKey: [QUERY_KEYS.TREATMENTS_BY_DATE, id_patient, date],
     queryFn: () =>
       TreatmentsService.getTodayTreatments({ idPatient: id_patient, date }),
