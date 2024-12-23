@@ -42,8 +42,12 @@ export abstract class TreatmentsService {
         },
         responseType: "json",
       });
+      console.log("response", response.data);
+
       return response.data;
     } catch (error) {
+      console.log("error details", error);
+
       throw new Error(JSON.stringify(error));
     }
   }

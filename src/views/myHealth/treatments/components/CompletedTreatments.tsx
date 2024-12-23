@@ -69,9 +69,9 @@ const CompletedTreatments = ({ tratamientos }: CompletedTreatmentsProps) => {
   };
   const getArrayBySelectedTab = () => {
     if (selectedTab === 1) {
-      return tratamientosAMGroup;
+      return tratamientosAMGroup ?? [];
     } else {
-      return tratamientosPMGroup;
+      return tratamientosPMGroup ?? [];
     }
   };
 
@@ -103,7 +103,7 @@ const CompletedTreatments = ({ tratamientos }: CompletedTreatmentsProps) => {
               style={{ ...styles.containerRow, marginTop: 5, marginBottom: 5 }}
             >
               <div style={styles.containerRow}>
-                <div style={{ width: 60 }}>
+                <div style={{ width: "20%" }}>
                   <Text
                     style={{
                       ...styles.treatmentHour,
@@ -121,6 +121,8 @@ const CompletedTreatments = ({ tratamientos }: CompletedTreatmentsProps) => {
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
+                    width: "100%",
+                    alignItems: "center",
                   }}
                 >
                   <Text
@@ -134,23 +136,6 @@ const CompletedTreatments = ({ tratamientos }: CompletedTreatmentsProps) => {
                   </Text>
                   <div>
                     {item.accion !== "N/R" &&
-                      //   <Icon
-                      //     name={
-                      //       item.accion === 'saltar'
-                      //         ? 'x-circle'
-                      //         : item.accion === 'registrar'
-                      //         ? 'check-circle'
-                      //         : 'x-circle'
-                      //     }
-                      //     size={20}
-                      //     color={
-                      //       item.accion === 'saltar'
-                      //         ? colorPalette.error
-                      //         : item.accion === 'registrar'
-                      //         ? colorPalette.success
-                      //         : colorPalette.error
-                      //     }
-                      //   />
                       (item.accion === "saltar" ? (
                         <CloseCircleFilled
                           style={{ color: colors.colorError, fontSize: 20 }}
@@ -220,9 +205,8 @@ const CompletedTreatments = ({ tratamientos }: CompletedTreatmentsProps) => {
         ))}
       </div>
       {/* treatments container  */}
-      <div style={styles.treatmentsContainer}>
-        <CompletedTreatmentsList />
-      </div>
+
+      <CompletedTreatmentsList />
     </div>
   );
 };
@@ -265,12 +249,15 @@ const styles: { [key: string]: CSSProperties } = {
     flexDirection: "column",
     gap: 10,
     padding: 10,
+    maxHeight: "40vh",
+    overflowY: "auto",
   },
   containerRow: {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 10,
+    width: "100%",
+    justifyContent: "center",
   },
   treatmentHour: {
     fontSize: 16,

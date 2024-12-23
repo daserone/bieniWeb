@@ -176,7 +176,7 @@ export const useTodayTreatments = (id_patient: string, date: string) => {
     select: (data: any) => {
       console.log(data, "today treatments");
 
-      return data.data ?? [];
+      return data ?? [];
     },
   });
 };

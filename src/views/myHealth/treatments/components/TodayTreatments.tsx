@@ -56,6 +56,7 @@ const TodayTreatments = () => {
   };
 
   const { Text } = Typography;
+  console.log(treatments, "treatments");
 
   return (
     <div style={styles.container}>
