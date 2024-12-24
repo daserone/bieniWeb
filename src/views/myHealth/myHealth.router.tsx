@@ -4,6 +4,7 @@ import IMAGES from "@theming/images";
 import MyHealthView from ".";
 import { Outlet } from "react-router-dom";
 import TreatmentsView from "./treatments";
+import MeasurementsView from "./measurements";
 
 const myHealthRoutes: AdminRouterItem[] = [
   {
@@ -35,6 +36,17 @@ const myHealthRoutes: AdminRouterItem[] = [
               label: "Tratamientos",
               title: "Tratamientos",
               key: "/myHealth/treatments",
+              icon: <ReactSVG src={IMAGES.ICONS_SVG.point_white_icon} />,
+            },
+          },
+          {
+            isAuth: true,
+            path: "measurements",
+            element: <MeasurementsView />,
+            meta: {
+              label: "Mediciones",
+              title: "Mediciones",
+              key: "/myHealth/measurements",
               icon: <ReactSVG src={IMAGES.ICONS_SVG.point_white_icon} />,
             },
           },

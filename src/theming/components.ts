@@ -1,7 +1,7 @@
 import { ThemeConfig } from "antd";
 import { colors } from "@theming/colors";
 
-const { colorPrimary, bgWhite, colorPrimaryDark } = colors;
+const { colorPrimary, bgWhite, colorPrimaryDark, colorSecondary } = colors;
 
 export const components: ThemeConfig["components"] = {
   Layout: {
@@ -35,5 +35,9 @@ export const components: ThemeConfig["components"] = {
   },
   Modal: {
     borderRadius: 30,
+  },
+  Radio: {
+    buttonSolidCheckedBg: colorSecondary,
+    padding: 30,
   },
 };

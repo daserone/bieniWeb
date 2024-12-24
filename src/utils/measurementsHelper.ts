@@ -29,7 +29,7 @@ export const getUnitLabel = (id: number, isPet: boolean = false) => {
 };
 
 export const handleCardsMeasurements = (data: any[]) => {
-  let cards = cardsMeasurements.map((card: any) => {
+  let cards = cardsMeasurements.map((card: any, index) => {
     let medicion = data?.find((m: any) => m.idtipomedicion == card.id);
     if (medicion) {
       if (medicion.idtipomedicion == 1) {
@@ -44,7 +44,7 @@ export const handleCardsMeasurements = (data: any[]) => {
         card.value = medicion.valor;
       }
       card.fecha = formatShortDate(medicion.fecha_creacion);
-      card.selected = true;
+      card.selected = index === 0;
     } else {
       card.selected = false;
       card.value = "";
@@ -56,7 +56,7 @@ export const handleCardsMeasurements = (data: any[]) => {
 
 //handle pets measurements
 export const handleCardsMeasurementsPets = (data: any[]) => {
-  let cards = cardsMeasurementsPets.map((card: any) => {
+  let cards = cardsMeasurementsPets.map((card: any, index) => {
     let medicion = data?.find((m: any) => m.idtipomedicion == card.id);
     if (medicion) {
       if (medicion.idtipomedicion == 2) {
@@ -67,7 +67,7 @@ export const handleCardsMeasurementsPets = (data: any[]) => {
         card.value = medicion.valor;
       }
       card.fecha = formatShortDate(medicion.fecha_creacion);
-      card.selected = true;
+      card.selected = index === 0;
     } else {
       card.selected = false;
       card.value = "";
@@ -181,4 +181,37 @@ export const changeValue = (values: MeasurementDetails[]) => {
 
 export const removeMinusSignValue = (values: MeasurementDetails[]) => {
   return changeValue(values).replace("-", "");
+};
+
+export const prepareImcData = (data: MeasurementDetails[]) => {
+  const imcData = data.map((d) => {
+    return {
+      date: d.fecha_creacion,
+      value: d.imc,
+    };
+  });
+  console.log("imcData", imcData);
+
+  return imcData;
+};
+
+export const preparePresionData = (data: MeasurementDetails[]) => {
+  const presionData = data.map((d) => {
+    return {
+      date: d.fecha_creacion,
+      sistolica: d.sistolica,
+      diastolica: d.diastolica,
+    };
+  });
+  return presionData;
+};
+
+export const prepareDefaultData = (data: MeasurementDetails[]) => {
+  const defaultData = data.map((d) => {
+    return {
+      date: d.fecha_creacion,
+      value: d.valor,
+    };
+  });
+  return defaultData;
 };

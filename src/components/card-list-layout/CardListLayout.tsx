@@ -91,7 +91,11 @@ const CardListLayout = ({
         </div>
       </div>
       {isTable ? (
-        <Table dataSource={dataSource} columns={columns} />
+        <Table
+          dataSource={dataSource}
+          columns={columns}
+          pagination={{ pageSize: 5 }}
+        />
       ) : (
         <Card
           style={{

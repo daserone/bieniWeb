@@ -36,7 +36,12 @@ export const useMeasurementDetails = (
   measurementId: number
 ) => {
   return useQuery<MeasurementDetails[]>({
-    queryKey: [QUERY_KEYS.MEASUREMENT_DETAILS, id_patient, id_pet],
+    queryKey: [
+      QUERY_KEYS.MEASUREMENT_DETAILS,
+      id_patient,
+      id_pet,
+      measurementId,
+    ],
     queryFn: () =>
       MeasurementService.getMeasurements({
         idPatient: id_patient,
