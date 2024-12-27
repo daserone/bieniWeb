@@ -1,7 +1,7 @@
 import { colors } from "@/theming/colors";
 import { IMeasurementCard } from "@/views/home/components/MeasurementList";
-import { Radio, Typography, Card, Space, Spin } from "antd";
-import { CSSProperties, useEffect, useMemo, useState } from "react";
+import { Radio, Typography, Spin, Table } from "antd";
+import { CSSProperties, useEffect, useState } from "react";
 import { Line } from "@ant-design/charts";
 import {
   MeasurementDetails,
@@ -15,7 +15,10 @@ import {
   prepareImcData,
   preparePresionData,
 } from "@/utils/measurementsHelper";
-import { transform } from "lodash-es";
+import {
+  formatDateMeasurementHistory,
+  formatShortDate,
+} from "@/utils/dateHelpers";
 
 interface MeasurementContentProps {
   selectedMeasurement: IMeasurementCard;
@@ -74,6 +77,8 @@ const MeasurementContent = ({
     MeasurementDetails[]
   >([]);
 
+  const [tableData, setTableData] = useState([]);
+
   const [lineConfig, setLineConfig] = useState({});
 
   useEffect(() => {
@@ -87,6 +92,8 @@ const MeasurementContent = ({
         return newItem;
       });
       setMeasurementDetails(details);
+      setTableData(prepareTableData(details));
+      console.log("details", details);
     }
   }, [data]);
 
@@ -129,6 +136,40 @@ const MeasurementContent = ({
     });
   }, [measurementDetails]);
 
+  const columns = [
+    {
+      title: "Valor",
+      dataIndex: "valor",
+      key: "valor",
+    },
+    {
+      title: "Dia y hora",
+      dataIndex: "fecha_creacion",
+      key: "fecha_creacion",
+    },
+    {
+      title: "Tendencia",
+      dataIndex: "tendencia",
+      key: "tendencia",
+    },
+  ];
+
+  const prepareTableData = (data: MeasurementDetails[]) => {
+    return data.map((item) => {
+      return {
+        key: item.id,
+        valor:
+          selectedMeasurement.id === 1
+            ? item.imc
+            : selectedMeasurement.id === 2
+            ? `${item.sistolica}/${item.diastolica} ${item.unit}`
+            : `${item.valor} ${item.unit}`,
+        fecha_creacion: formatDateMeasurementHistory(item.fecha_creacion),
+        tendencia: "Tendencia",
+      };
+    });
+  };
+
   //TODO CHART  DATA FROM API
 
   const prepareChartData = (data: MeasurementDetails[]) => {
@@ -156,16 +197,22 @@ const MeasurementContent = ({
           <Radio.Button value="table">Historial</Radio.Button>
         </Radio.Group>
       </div>
-      {mode === "graph" ? (
+      {isLoading ? (
+        <Spin />
+      ) : isError ? (
+        <Text>Ha ocurrido un error</Text>
+      ) : mode === "graph" ? (
         <div style={{ width: "100%", minHeight: "300px" }}>
-          {isLoading ? <Spin /> : <Line {...lineConfig} />}
+          <Line {...lineConfig} />
         </div>
       ) : (
-        <Card title="Pie Chart Demo" style={{ width: "100%" }}>
-          <div style={{ width: "100%", minHeight: "300px" }}>
-            {/* <Table {...pieConfig} /> */}
-          </div>
-        </Card>
+        <div style={{ width: "100%", minHeight: "300px" }}>
+          <Table
+            columns={columns}
+            dataSource={tableData}
+            pagination={{ pageSize: 5 }}
+          />
+        </div>
       )}
     </>
   );

@@ -101,6 +101,7 @@ function LoginPage() {
       {/* modal pw recovery  */}
       <CustomModal
         isModalOpen={openPwRecovery}
+        onClose={() => setOpenPwRecovery(false)}
         handleCancel={() => setOpenPwRecovery(false)}
         handleOk={() => setOpenPwRecovery(false)}
         children={

@@ -4,15 +4,18 @@ import {
   handleCardsMeasurementsPets,
   handleCardsMeasurements,
 } from "@/utils/measurementsHelper";
-import MeasurementCard from "@/views/home/components/MeasurementCard";
 import { Row, Col, Typography } from "antd";
 import { CSSProperties, useMemo, useState } from "react";
 import MeasurementCardVertical from "./MeasurementCardVertical";
 import { IMeasurementCard } from "@/views/home/components/MeasurementList";
-import { colors } from "@/theming/colors";
 import MeasurementContent from "./MeasurementContent";
+import CustomModal from "@/components/custom-modal/CustomModal";
+import ModalSelectMeasurement from "./ModalSelectMeasurement";
+import BieniButton from "@/components/bieni-button/BieniButton";
 
 const MeasurementsContainer = () => {
+  const { Title } = Typography;
+
   const { user } = useUser();
   const { data, isError, isLoading } = useMeasurements(
     user.id_patient,
@@ -45,35 +48,68 @@ const MeasurementsContainer = () => {
 
   let selectedMeasurement = measurements.find((m) => m.selected);
 
-  const { Text } = Typography;
+  const [visible, setVisible] = useState(false);
 
   return (
-    <div style={styles.container}>
-      <Row>
-        <Col span={6} style={styles.columnList}>
-          {measurements.map((card, index) => (
-            <MeasurementCardVertical
-              measurement={card}
-              isFirst={index === 0}
-              isLast={index === measurements.length - 1}
-              selected={card.selected}
-              handleSelect={handleSelect}
+    <>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Title style={{ marginBottom: "1.2em", marginLeft: 20 }} level={4}>
+          Mediciones
+        </Title>
+        <div style={{ width: "20%" }}>
+          <BieniButton
+            text="Agregar medición"
+            onPress={() => {
+              setVisible(true);
+            }}
+            height={30}
+          />
+        </div>
+      </div>
+      <div style={styles.container}>
+        <Row>
+          <Col span={6} style={styles.columnList}>
+            {measurements.map((card, index) => (
+              <MeasurementCardVertical
+                measurement={card}
+                isFirst={index === 0}
+                isLast={index === measurements.length - 1}
+                selected={card.selected}
+                handleSelect={handleSelect}
+              />
+            ))}
+          </Col>
+          <Col
+            span={18}
+            style={{
+              background: "#fff",
+              padding: "20px",
+            }}
+          >
+            {selectedMeasurement && (
+              <MeasurementContent selectedMeasurement={selectedMeasurement} />
+            )}
+          </Col>
+        </Row>
+        <CustomModal
+          isModalOpen={visible}
+          onClose={() => setVisible(false)}
+          children={
+            <ModalSelectMeasurement
+              handleClose={() => setVisible(false)}
+              handleSelect={() => {}}
+              measurements={measurements}
             />
-          ))}
-        </Col>
-        <Col
-          span={18}
-          style={{
-            background: "#fff",
-            padding: "20px",
-          }}
-        >
-          {selectedMeasurement && (
-            <MeasurementContent selectedMeasurement={selectedMeasurement} />
-          )}
-        </Col>
-      </Row>
-    </div>
+          }
+        />
+      </div>
+    </>
   );
 };
 

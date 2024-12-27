@@ -30,6 +30,18 @@ const ICONS_SVG = {
     "@assets/icons/grid-icon-selected.svg",
     import.meta.url
   ).href,
+  temperature_icon: new URL("@assets/icons/temp-icon.svg", import.meta.url)
+    .href,
+  oxygen_icon: new URL("@assets/icons/sat-ox-icon.svg", import.meta.url).href,
+  pressure_icon: new URL("@assets/icons/presion-icon.svg", import.meta.url)
+    .href,
+  weight_icon: new URL("@assets/icons/peso-icon.svg", import.meta.url).href,
+  imc_icon: new URL("@assets/icons/imc-icon.svg", import.meta.url).href,
+  glucose_icon: new URL("@assets/icons/glucosa-icon.svg", import.meta.url).href,
+  respiratory_icon: new URL("@assets/icons/frec-resp-icon.svg", import.meta.url)
+    .href,
+  cardiac_icon: new URL("@assets/icons/frec-card-icon.svg", import.meta.url)
+    .href,
 };
 
 export default { COMMON_IMAGES, ICONS_SVG };

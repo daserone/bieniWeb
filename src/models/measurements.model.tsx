@@ -1,9 +1,10 @@
+import images from "@/theming/images";
 import { ReactSVG } from "react-svg";
 const cardsMeasurements: MeasurementCard[] = [
   {
     id: 1,
     title: "IMC",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.imc_icon} />,
     selected: false,
     value: "34.13",
     unit: "",
@@ -15,7 +16,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 2,
     title: "Presión",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.pressure_icon} />,
     selected: false,
     value: "120/80",
     unit: "mmHg",
@@ -27,7 +28,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 3,
     title: "Temperatura",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.temperature_icon} />,
     selected: false,
     value: "37",
     unit: "°C",
@@ -39,7 +40,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 4,
     title: "Peso",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.weight_icon} />,
     selected: false,
     value: "120",
     unit: "lbs",
@@ -51,7 +52,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 5,
     title: "Glucosa",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.glucose_icon} />,
     selected: false,
     value: "126",
     unit: "mg/dL",
@@ -63,7 +64,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 6,
     title: "Frecuencia Respiratoria",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.respiratory_icon} />,
     selected: false,
     value: "30",
     unit: "rpm",
@@ -75,7 +76,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 7,
     title: "Frecuencia Cardíaca",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.cardiac_icon} />,
     selected: false,
     value: "60",
     unit: "lpm",
@@ -87,7 +88,7 @@ const cardsMeasurements: MeasurementCard[] = [
   {
     id: 8,
     title: "Saturación de Oxigeno",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.oxygen_icon} />,
     selected: false,
     value: "94",
     unit: "%",
@@ -102,7 +103,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
   {
     id: 2,
     title: "Presión",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.pressure_icon} />,
     selected: false,
     value: "120/80",
     unit: "mmHg",
@@ -114,7 +115,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
   {
     id: 3,
     title: "Temperatura",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.temperature_icon} />,
     selected: false,
     value: "37",
     unit: "°C",
@@ -126,7 +127,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
   {
     id: 4,
     title: "Peso",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.weight_icon} />,
     selected: false,
     value: "120",
     unit: "lbs",
@@ -138,7 +139,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
   {
     id: 6,
     title: "Frecuencia Respiratoria",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.respiratory_icon} />,
     selected: false,
     value: "30",
     unit: "rpm",
@@ -150,7 +151,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
   {
     id: 7,
     title: "Frecuencia Cardíaca",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.cardiac_icon} />,
     selected: false,
     value: "60",
     unit: "lpm",
@@ -162,7 +163,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
   {
     id: 9,
     title: "Altura",
-    Icon: undefined,
+    Icon: <ReactSVG src={images.ICONS_SVG.weight_icon} />,
     selected: false,
     value: "34.13",
     unit: "cm",
@@ -176,7 +177,7 @@ const cardsMeasurementsPets: MeasurementCard[] = [
 interface MeasurementCard {
   id: number;
   title: string;
-  Icon?: React.FC<ReactSVG>;
+  Icon?: React.ReactElement;
   selected: boolean;
   value: string;
   unit: string;
