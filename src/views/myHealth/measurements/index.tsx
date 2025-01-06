@@ -1,9 +1,7 @@
-import { Breadcrumb, Typography } from "antd";
+import { Breadcrumb } from "antd";
 import MeasurementsContainer from "./components/MeasurementsContainer";
 
 const MeasurementsView = () => {
-  const { Title } = Typography;
-
   return (
     <>
       <div

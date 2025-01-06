@@ -6,8 +6,9 @@ export const useMeasurements = (id_patient: string, id_pet: string) => {
   return useQuery<any[]>({
     queryKey: [QUERY_KEYS.MEASUREMENTS, id_patient, id_pet],
     queryFn: () => MeasurementService.getLastMeasurements(id_patient),
-    placeholderData: keepPreviousData,
     select: (data: any) => {
+      console.log("query data", data);
+
       return data.data ?? [];
     },
   });
@@ -48,7 +49,6 @@ export const useMeasurementDetails = (
         idUser: id,
         idTypeMeasurement: measurementId.toString(),
       }),
-    placeholderData: keepPreviousData,
     select: (data: any) => {
       return data.data ?? [];
     },

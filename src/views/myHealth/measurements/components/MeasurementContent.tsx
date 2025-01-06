@@ -25,36 +25,6 @@ interface MeasurementContentProps {
 }
 
 type TabPosition = "graph" | "table";
-// altura
-// :
-// ""
-// diastolica
-// :
-// 67
-// fecha_creacion
-// :
-// "2024-09-20 10:57:18"
-// id
-// :
-// 1672
-// idtipomedicion
-// :
-// 2
-// medicion
-// :
-// "Presión arterial"
-// peso
-// :
-// ""
-// sistema
-// :
-// "BW"
-// sistolica
-// :
-// 102
-// valor
-// :
-// ""
 
 const MeasurementContent = ({
   selectedMeasurement,
@@ -83,6 +53,8 @@ const MeasurementContent = ({
 
   useEffect(() => {
     if (data) {
+      console.log("data details", data);
+
       let details = data.map((item) => {
         const newItem = { ...item };
         if (selectedMeasurement.id == 1) {
@@ -93,7 +65,6 @@ const MeasurementContent = ({
       });
       setMeasurementDetails(details);
       setTableData(prepareTableData(details));
-      console.log("details", details);
     }
   }, [data]);
 

@@ -10,11 +10,11 @@ import { PersistGate } from "redux-persist/integration/react";
 import { FirebaseService } from "./providers/firebase/FirebaseService";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+const queryClient = new QueryClient();
 
 const App: React.FC = () => {
   // const theme = useConfigStore((state) => state.themeConfig);
   const navigate = useNavigate();
-  const queryClient = new QueryClient();
 
   //init firebase service
   // FirebaseService.instance;

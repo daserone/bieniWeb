@@ -190,7 +190,6 @@ export const prepareImcData = (data: MeasurementDetails[]) => {
       value: d.imc,
     };
   });
-  console.log("imcData", imcData);
 
   return imcData;
 };
